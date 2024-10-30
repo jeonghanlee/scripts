@@ -2,7 +2,7 @@
 
 * `pdfextract.bash`
 
-This script will be used for splitting a single scan pdf to multiple pdf files with a hard-code prefix name
+This script will be used for splitting a single scan pdf to multiple pdf files with a hard-code prefix name. One must edit the snlist for the prefix range as well.
 
 ```
 bash pdfextract.bash DOC083023.pdf AL-1635-7629-TIP

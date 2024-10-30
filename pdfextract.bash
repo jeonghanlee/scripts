@@ -63,12 +63,14 @@ function extraction
 }
 
 declare -a snlist;
+declare -a reversed_snlist;
 
 # snlist is hard-code number ranges
 # It will use as a prefix of the output file
 #
-snlist+=(766 {770..818})
-
+#snlist+=(766 {770..818})
+snlist+=({1423..1440})
+reversed_snlist=($(printf "%s\n" "${snlist[@]}" | tac))
 input_pdf="$1"; shift;
 output_name="$1"; shift;
 
@@ -78,7 +80,9 @@ if [ -z ${output_name} ]; then usage; fi
 
 first=1;
 page_offset=2;
-for prefix in "${snlist[@]}"; do
+#for prefix in "${snlist[@]}"; do
+for prefix in "${reversed_snlist[@]}"; do
+    #echo $prefix
     last=$((first+1));
     extraction "$input_pdf" "$first" "$last" "$prefix" "$output_name"
     first=$((first+$page_offset))
